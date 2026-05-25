@@ -1,0 +1,54 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Frame name="CDT_CastBarTemplate" virtual="true">
+        <Frames>
+            <StatusBar parentKey="StatusBar" setAllPoints="true" frameStrata="MEDIUM" frameLevel="1">
+                <BarTexture file="Interface\AddOns\DungeonCastTracker\Media\Statusbar.tga"/>
+            </StatusBar>
+
+            <Frame parentKey="Backdrop" inherits="BackdropTemplate" frameStrata="MEDIUM" frameLevel="2">
+                <KeyValues>
+                    <KeyValue key="backdropInfo" value="CDT_Backdrop" type="global"/>
+                </KeyValues>
+
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="-1" y="1"/>
+                    <Anchor point="BOTTOMRIGHT" x="1" y="-1"/>
+                </Anchors>
+            </Frame>
+        </Frames>
+
+		<Layers>
+            <Layer level="BACKGROUND">
+                <Texture parentKey="Background" file="Interface\AddOns\DungeonCastTracker\Media\Statusbar.tga" setAllPoints="true">
+                    <Color r="0" g="0" b="0" a="1.0"/>
+                </Texture>
+            </Layer>
+
+			<Layer level="OVERLAY">
+                <FontString parentKey="SpellName" font="Interface\AddOns\DungeonCastTracker\Media\FiraSans-Medium.ttf" outline="">
+                    <FontHeight val="10"/>
+
+                    <Shadow>
+                        <Offset x="1" y="-1" />
+                        <Color r="0" g="0" b="0"/>
+                    </Shadow>
+
+                    <Anchors>
+                        <Anchor point="LEFT" x="3"/>
+                    </Anchors>
+                </FontString>
+
+                <FontString parentKey="TargetName" font="Interface\AddOns\DungeonCastTracker\Media\FiraSans-Medium.ttf" outline="">
+                    <FontHeight val="10"/>
+
+                    <Shadow>
+                        <Offset x="4" y="-1" />
+                        <Color r="0" g="0" b="0"/>
+                    </Shadow>
+                </FontString>
+
+				<Texture parentKey="Icon"/>
+			</Layer>
+		</Layers>
+    </Frame>
+</Ui>

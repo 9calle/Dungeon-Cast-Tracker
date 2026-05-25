@@ -1,0 +1,8 @@
+## Title: Dungeon Cast Tracker
+## Version: 1.0.0
+## Interface: 120000, 120001
+## SavedVariables: CDT_DB
+## IconTexture: Interface\AddOns\DungeonCastTracker\Media\Icon.tga
+
+CDT.lua
+Frame.xml
