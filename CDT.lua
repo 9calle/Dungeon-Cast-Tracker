@@ -40,7 +40,7 @@ local function UpdateCastBarPositions()
 end
 
 local function UpdateCastBar(unit)
-    if not C_ChallengeMode.IsChallengeModeActive() or not string.match(unit, "nameplate%d+") then return end
+    if not string.match(unit, "nameplate%d+") then return end
 
     local frame = activeCastFrames[unit]
     if not frame then
@@ -69,18 +69,36 @@ local function UpdateCastBar(unit)
     if spellName then
         frame.StatusBar:GetStatusBarTexture():SetVertexColorFromBoolean(notInterruptible,
             CreateColor(CDT_DB.ColorNotInt.R, CDT_DB.ColorNotInt.G, CDT_DB.ColorNotInt.B), CreateColor(CDT_DB.ColorInt.R, CDT_DB.ColorInt.G, CDT_DB.ColorInt.B))
+
+        frame.StatusBar:SetPoint("TOPLEFT", frame, "TOPLEFT", CDT_DB.Height, 0)
+
         local targetName = UnitSpellTargetName(unit)
         if targetName then
             local targetClass = UnitSpellTargetClass(unit)
             local classColor = C_ClassColor.GetClassColor(targetClass)
+            frame.SpellName:SetPoint("LEFT", frame.StatusBar, "LEFT", 1, 0)
             frame.SpellName:SetText(spellName.." → ")
             frame.TargetName:SetPoint("LEFT", frame.SpellName, "RIGHT")
             frame.TargetName:SetText(targetName)
             frame.TargetName:SetTextColor(classColor.r, classColor.g, classColor.b)
         else
+            frame.SpellName:SetPoint("LEFT", frame.StatusBar, "LEFT", 1, 0)
             frame.SpellName:SetText(spellName)
             frame.TargetName:SetText("")
         end
+
+        frame.Icon:SetWidth(CDT_DB.Height)
+        frame.Icon:SetTexture(textureID)
+
+        local marker = GetRaidTargetIndex(unit)
+        if marker then
+            frame.Marker:SetSize(CDT_DB.Height, CDT_DB.Height)
+            frame.Marker:SetTexture("Interface/TargetingFrame/UI-RaidTargetingIcons")
+            SetRaidTargetIconTexture(frame.Marker, marker)
+        else
+            frame.Marker:SetTexture("")
+        end
+
     end
 
     UpdateCastBarPositions()
