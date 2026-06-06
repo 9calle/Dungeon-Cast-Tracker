@@ -40,7 +40,7 @@ local function UpdateCastBarPositions()
 end
 
 local function UpdateCastBar(unit)
-    if not string.match(unit, "nameplate%d+") then return end
+    if not C_ChallengeMode.IsChallengeModeActive() or not string.match(unit, "nameplate%d+") then return end
 
     local frame = activeCastFrames[unit]
     if not frame then
@@ -93,10 +93,10 @@ local function UpdateCastBar(unit)
         local marker = GetRaidTargetIndex(unit)
         if marker then
             frame.Marker:SetSize(CDT_DB.Height, CDT_DB.Height)
-            frame.Marker:SetTexture("Interface/TargetingFrame/UI-RaidTargetingIcons")
             SetRaidTargetIconTexture(frame.Marker, marker)
+            frame.Marker:Show()
         else
-            frame.Marker:SetTexture("")
+            frame.Marker:Hide()
         end
 
     end

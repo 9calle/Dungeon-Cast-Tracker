@@ -47,7 +47,7 @@
                     </Anchors>
                 </Texture>
 
-                <Texture parentKey="Marker">
+                <Texture parentKey="Marker" file="Interface/TargetingFrame/UI-RaidTargetingIcons">
                     <Anchors>
                         <Anchor point="RIGHT" relativePoint="LEFT" x="-1"/>
                     </Anchors>
